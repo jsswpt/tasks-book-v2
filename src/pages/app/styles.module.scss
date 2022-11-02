@@ -36,12 +36,12 @@
 }
 
 .main {
+  min-height: calc(100vh - header.$height);
   @include breakpoints.screen-xs {
     padding: calc(units.$unit * 3) 0;
-    min-height: calc(100vh - header.$height);
   }
   @include breakpoints.screen-xl {
     padding: calc(units.$unit * 3) 0;
-    min-height: calc(100vh - header.$height);
+    
   }
 }
