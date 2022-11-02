@@ -1,0 +1,35 @@
+@use "../../../shared/styles/units.module";
+@use "../../../shared/styles/breakpoints.module";
+
+.page {
+  @include breakpoints.screen-xs {
+    display: flex;
+    flex-direction: column;
+    gap: calc(units.$unit * 2);
+  }
+
+  @include breakpoints.screen-xl {
+    display: flex;
+    flex-direction: row;
+    gap: calc(units.$unit * 2);
+  }
+}
+
+.side {
+  display: flex;
+  flex-direction: column;
+  gap: calc(units.$unit * 2);
+
+  @include breakpoints.screen-xs {
+    width: 100%;
+  }
+
+  @include breakpoints.screen-xl {
+    &:nth-child(1) {
+      width: 55%;
+    }
+    &:nth-child(2) {
+      width: 45%;
+    }
+  }
+}

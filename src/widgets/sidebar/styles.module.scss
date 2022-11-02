@@ -1,0 +1,71 @@
+@use "../../shared/styles/sidebar.module";
+@use "../../shared/styles/breakpoints.module";
+@use "../../shared/styles/colors.module";
+
+.sidebar {
+  position: fixed;
+  width: sidebar.$width;
+  height: sidebar.$height;
+
+  background: colors.$surface;
+
+  overflow: hidden;
+
+  @include breakpoints.screen-xs {
+    animation: show_sidebar linear forwards 0.64s;
+  }
+  @include breakpoints.screen-xl {
+    animation: none;
+  }
+}
+
+.sidebar__xs {
+  @include breakpoints.screen-xs {
+    display: block;
+  }
+  @include breakpoints.screen-xl {
+    display: none;
+  }
+}
+
+.sidebar__xl {
+  @include breakpoints.screen-xs {
+    display: none;
+  }
+  @include breakpoints.screen-xl {
+    display: block;
+  }
+}
+
+.sidebar__hidden {
+  @include breakpoints.screen-xs {
+    animation: hide_sidebar linear forwards 0.64s;
+  }
+  @include breakpoints.screen-xl {
+    animation: none;
+  }
+}
+
+@keyframes hide_sidebar {
+  0% {
+    width: sidebar.$width;
+  }
+  50% {
+    width: 0px;
+  }
+  100% {
+    width: 0;
+    display: none;
+  }
+}
+@keyframes show_sidebar {
+  0% {
+    display: none;
+    width: 0px;
+  }
+  50% {
+    width: sidebar.$width;
+  }
+  100% {
+  }
+}

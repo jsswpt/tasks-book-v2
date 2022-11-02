@@ -1,0 +1,7 @@
+@use "../../styles/colors.module";
+@use "../../styles/units.module";
+
+.card {
+  background: colors.$surface;
+  border-radius: calc(units.$unit * 1.5);
+}

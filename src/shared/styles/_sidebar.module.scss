@@ -1,1 +1,4 @@
-$width: 250px;
+@use "./units.module";
+
+$width: calc(units.$unit * 30);
+$height: 100vh;

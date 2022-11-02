@@ -1,4 +1,48 @@
+@use "../../shared/styles/colors.module";
+@use "../../shared/styles/breakpoints.module";
+@use "../../shared/styles/sidebar.module";
+@use "../../shared/styles/container.module";
+@use "../../shared/styles/units.module";
+@use "../../shared/styles/header.module";
+
 .app {
   min-height: 100vh;
-  background: red;
+  background: colors.$background;
+
+  @include breakpoints.screen-xs {
+    display: block;
+  }
+  @include breakpoints.screen-xl {
+    display: flex;
+  }
+}
+
+.app_content_wrap {
+  width: 100%;
+
+  @include breakpoints.screen-xs {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  @include breakpoints.screen-xl {
+    padding-left: calc(sidebar.$width + units.$unit * 4);
+    padding-right: calc(units.$unit * 4);
+  }
+}
+
+.container {
+  @include container.container;
+  height: 100%;
+}
+
+.main {
+  @include breakpoints.screen-xs {
+    padding: calc(units.$unit * 3) 0;
+    min-height: 100vh;
+  }
+  @include breakpoints.screen-xl {
+    padding: calc(units.$unit * 3) 0;
+    min-height: auto;
+    min-height: calc(100vh - header.$height);
+  }
 }

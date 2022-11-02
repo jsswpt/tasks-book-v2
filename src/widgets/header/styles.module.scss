@@ -1,0 +1,35 @@
+@use "../../shared/styles/header.module";
+@use "../../shared/styles/container.module";
+@use "../../shared/styles/breakpoints.module";
+
+.header {
+  display: flex;
+  align-items: center;
+  height: header.$height;
+}
+
+.container {
+  @include container.container;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header_wrap__menu {
+  @include breakpoints.screen-xs {
+    display: block;
+  }
+  @include breakpoints.screen-xl {
+    display: none;
+  }
+}
+
+.header_wrap__button {
+  @include breakpoints.screen-xs {
+    display: none;
+  }
+  @include breakpoints.screen-xl {
+    display: block;
+  }
+}

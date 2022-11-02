@@ -1,0 +1,42 @@
+.modal {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.hiding {
+  animation: hiding forwards 0.64s;
+}
+
+.rising {
+  animation: rising forwards 0.64s;
+}
+
+@keyframes hiding {
+  0% {
+    background: rgba(0, 0, 0, 0.6);
+  }
+  50% {
+    background: none;
+  }
+  100% {
+    background: none;
+    display: none;
+  }
+}
+
+@keyframes rising {
+  0% {
+    display: none;
+    background: none;
+  }
+  50% {
+    display: block;
+  }
+  100% {
+    background: rgba(0, 0, 0, 0.6);
+  }
+}
