@@ -32,11 +32,9 @@
 
 .container {
   @include container.container;
-  height: 100%;
 }
 
 .main {
-  min-height: calc(100vh - header.$height);
   @include breakpoints.screen-xs {
     padding: calc(units.$unit * 3) 0;
   }
