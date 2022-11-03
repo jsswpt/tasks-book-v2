@@ -43,12 +43,12 @@ class Task {
     },
   ];
 
+  // как бы временный массив, используемый при наличии фильтров
   currentList: taskTypes.Task[] = [...this.baseTasks];
 
   currentCategory: string = "";
-  filterFunctions: utilTypes.FilterFunctionType[] = [];
 
-  isFiltred: boolean = false;
+  filterFunctions: utilTypes.FilterFunctionType[] = [];
 
   constructor() {
     makeAutoObservable(this);
@@ -57,24 +57,15 @@ class Task {
     this.addFilterFunc = this.addFilterFunc.bind(this);
     this.removeFilterFunc = this.removeFilterFunc.bind(this);
     this.filterTasks = this.filterTasks.bind(this);
-    this.onAction = this.onAction.bind(this);
     this.setCurrentCategory = this.setCurrentCategory.bind(this);
-  }
-
-  onAction() {
-    if (this.filterFunctions.length) {
-      this.isFiltred = true;
-    } else {
-      this.isFiltred = false;
-    }
   }
 
   setCurrentCategory(category: string) {
     this.currentCategory = category;
+    this.filterTasks();
   }
 
   toggleTaskState(taskId: string) {
-    this.onAction();
     this.baseTasks = this.baseTasks.map((item) =>
       item.id === taskId ? { ...item, isDone: !item.isDone } : item
     );
@@ -83,13 +74,12 @@ class Task {
   }
 
   filterTasks() {
-    this.onAction();
-
+    // фильтр по категории
     this.currentList = this.baseTasks.filter(
       (item) => item.categoryId === this.currentCategory
     );
 
-    this.currentList = this.baseTasks.filter((item) => {
+    this.currentList = this.currentList.filter((item) => {
       if (this.filterFunctions.length) {
         const isFitted = this.filterFunctions.map((func) => {
           return func.func(item);
@@ -107,15 +97,13 @@ class Task {
   sortTasks() {}
 
   addFilterFunc(data: utilTypes.FilterFunctionType) {
-    this.onAction();
     this.filterFunctions.push(data);
     this.filterTasks();
   }
 
   removeFilterFunc(id: string) {
+    // пока что массив очищается полностью
     this.filterFunctions = [];
-
-    console.log(this.filterFunctions.length);
   }
 }
 

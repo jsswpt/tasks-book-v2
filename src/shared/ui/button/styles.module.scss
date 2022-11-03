@@ -1,0 +1,149 @@
+@use "../../styles/colors.module";
+@use "../../styles/typography.module";
+@use "../../styles/units.module";
+
+.button {
+  @include typography.button_inner;
+  padding: 0 units.$unit * 4;
+  border: none;
+  border-radius: units.$unit * 1.5;
+
+  transition: 0.16s;
+  cursor: pointer;
+}
+
+.icon_button {
+  padding: units.$unit;
+  border: none;
+  border-radius: 50%;
+
+  transition: 0.16s;
+  cursor: pointer;
+}
+
+.button_inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: units.$unit;
+}
+
+.small {
+  height: units.$unit * 3;
+
+  .icon {
+    width: units.$unit * 2;
+    height: units.$unit * 2;
+  }
+}
+
+.medium {
+  height: units.$unit * 5;
+
+  .icon {
+    width: units.$unit * 3;
+    height: units.$unit * 3;
+  }
+}
+
+.large {
+  height: units.$unit * 7;
+  .icon {
+    width: units.$unit * 4;
+    height: units.$unit * 4;
+  }
+}
+
+.icon_small {
+  .icon {
+    width: units.$unit * 2;
+    height: units.$unit * 2;
+  }
+}
+
+.icon_medium {
+  .icon {
+    width: units.$unit * 3;
+    height: units.$unit * 3;
+  }
+}
+
+.icon_large {
+  .icon {
+    width: units.$unit * 4;
+    height: units.$unit * 4;
+  }
+}
+
+.bg_primary {
+  background: colors.$primary;
+  color: #fff;
+}
+.bg_warning {
+  background: colors.$warning;
+  color: #fff;
+}
+.bg_danger {
+  background: colors.$danger;
+  color: #fff;
+}
+.bg_success {
+  background: colors.$success;
+  color: #fff;
+}
+.bg_inherit {
+  background: colors.$background;
+  color: colors.$text-primary;
+
+  &:hover {
+    background: colors.$text-secondary;
+  }
+}
+
+.color_primary {
+  color: colors.$primary;
+
+  &:hover {
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
+  }
+}
+.color_warning {
+  color: colors.$warning;
+  &:hover {
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
+  }
+}
+.color_danger {
+  color: colors.$danger;
+  &:hover {
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
+  }
+}
+.color_success {
+  color: colors.$success;
+  &:hover {
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
+  }
+}
+
+.icon {
+  display: flex;
+  flex-shrink: none;
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.border_primary {
+  border: 1px solid colors.$primary;
+}
+.border_warning {
+  border: 1px solid colors.$warning;
+}
+.border_danger {
+  border: 1px solid colors.$danger;
+}
+.border_success {
+  border: 1px solid colors.$success;
+}

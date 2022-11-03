@@ -1,16 +1,23 @@
 import { taskModel } from "entities/task/task";
 import { FilterTasks } from "features";
 import { observer } from "mobx-react-lite";
-import { useEffect, useMemo } from "react";
+import React, { useEffect, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { TaskCard } from "widgets";
+import compose from "compose-function";
+import { Button } from "shared/ui/button/button";
 
-export const Tasks = observer(() => {
+import { BsPlusCircle } from "react-icons/bs";
+
+const withHocs = compose(React.memo, observer);
+
+export const Tasks = withHocs(() => {
   const { categoryId } = useParams();
   const tasks = taskModel;
 
   useEffect(() => {
     tasks.setCurrentCategory(categoryId!);
+    console.log(tasks.currentCategory);
   }, [categoryId]);
 
   return (

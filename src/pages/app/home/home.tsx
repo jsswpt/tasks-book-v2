@@ -1,10 +1,11 @@
+import React from "react";
 import { Outlet } from "react-router-dom";
 import { CardInnerLayout } from "shared/ui/card-inner-layout/card-inner-layout";
 import { Card } from "shared/ui/card/card";
 
 import st from "./styles.module.scss";
 
-export const Home = () => {
+export const Home = React.memo(() => {
   return (
     <div className={st.page}>
       <div className={st.side}>
@@ -29,4 +30,4 @@ export const Home = () => {
       </div>
     </div>
   );
-};
+});

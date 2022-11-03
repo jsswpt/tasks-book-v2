@@ -7,6 +7,7 @@ type ModalProps = {
   isOpen: boolean;
   onClose?: () => void;
   children: React.ReactNode;
+  alignCenter?: boolean;
 };
 
 export const Modal = (props: ModalProps) => {
@@ -36,6 +37,11 @@ export const Modal = (props: ModalProps) => {
         el.remove();
         clearTimeout(timeOut);
       }, 640);
+    }
+
+    if (props.alignCenter) {
+      modalRef.current!.className =
+        modalRef.current!.className + " " + st.align_center;
     }
   }, [props.isOpen]);
 

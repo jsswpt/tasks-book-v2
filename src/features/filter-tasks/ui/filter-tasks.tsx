@@ -13,7 +13,6 @@ export const FilterTasks = observer(() => {
         );
 
         model.removeFilter(item!.id);
-
         model.addFilter({ func: item!.func, id: item!.id });
       }}
     >
