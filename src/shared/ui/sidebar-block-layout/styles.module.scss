@@ -1,0 +1,9 @@
+@use "../../styles/typography.module";
+@use "../../styles/colors.module";
+@use "../../styles/units.module";
+
+.title {
+  @include typography.h2;
+  margin-bottom: calc(units.$unit * 2);
+  color: colors.$primary;
+}

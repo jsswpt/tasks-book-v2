@@ -1,5 +1,4 @@
 import { Outlet } from "react-router-dom";
-import { Tasks } from "./tasks/tasks";
 
 import st from "./styles.module.scss";
 import { Header, Sidebar } from "widgets";

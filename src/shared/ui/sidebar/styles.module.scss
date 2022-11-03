@@ -1,11 +1,20 @@
-@use "../../shared/styles/sidebar.module";
-@use "../../shared/styles/breakpoints.module";
-@use "../../shared/styles/colors.module";
+@use "../../styles/sidebar.module";
+@use "../../styles/breakpoints.module";
+@use "../../styles/colors.module";
+@use "../../styles/units.module";
 
 .sidebar {
+  padding: calc(units.$unit * 4) 0;
+
   position: fixed;
   width: sidebar.$width;
   height: sidebar.$height;
+
+  display: flex;
+  flex-direction: column;
+  gap: calc(units.$unit * 4);
+
+  box-shadow: 0 0 64px rgba(0, 0, 0, 0.25);
 
   background: colors.$surface;
 
@@ -18,24 +27,6 @@
   @include breakpoints.screen-xl {
     position: fixed;
     animation: none;
-  }
-}
-
-.sidebar__xs {
-  @include breakpoints.screen-xs {
-    display: block;
-  }
-  @include breakpoints.screen-xl {
-    display: none;
-  }
-}
-
-.sidebar__xl {
-  @include breakpoints.screen-xs {
-    display: none;
-  }
-  @include breakpoints.screen-xl {
-    display: block;
   }
 }
 
@@ -60,6 +51,7 @@
     display: none;
   }
 }
+
 @keyframes show_sidebar {
   0% {
     display: none;
@@ -73,4 +65,14 @@
   100% {
     width: sidebar.$width;
   }
+}
+
+.sidebar_block {
+  padding: 0 0 0 calc(units.$unit * 2);
+}
+
+.sidebar_block__middle {
+  display: flex;
+  flex-direction: column;
+  gap: calc(units.$unit * 4);
 }

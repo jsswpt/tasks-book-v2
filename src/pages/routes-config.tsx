@@ -15,14 +15,16 @@ export const privateRoutesConfig: RouteObject[] = [
         element: <Home />,
         children: [
           {
-            path: routes.privateRoutes.CATEGORIES + ":categoryId",
+            path: "",
+            element: <>tut zaglushka</>,
+          },
+          {
+            path: routes.privateRoutes.CATEGORIES + ":categoryid",
             element: <Tasks />,
           },
           {
             path: "*",
-            element: (
-              <Navigate to={routes.privateRoutesForNavigation.CATEGORIES} />
-            ),
+            element: <Navigate to={routes.privateRoutesForNavigation.HOME} />,
           },
         ],
       },
@@ -35,6 +37,6 @@ export const privateRoutesConfig: RouteObject[] = [
   },
   {
     path: "*",
-    element: <Navigate to={routes.privateRoutes.APP} />,
+    element: <Navigate to={routes.privateRoutesForNavigation.HOME} />,
   },
 ];

@@ -14,7 +14,9 @@ export const Home = () => {
           </CardInnerLayout>
         </Card>
         <Card>
-          <CardInnerLayout title="Задачи">Какой-то блок</CardInnerLayout>
+          <CardInnerLayout title="Задачи">
+            <Outlet />
+          </CardInnerLayout>
         </Card>
       </div>
       <div className={st.side}>

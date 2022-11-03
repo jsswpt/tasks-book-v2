@@ -1,44 +1,44 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useSidebar } from "entities/sidebar-context/hooks/use-sidebar";
 import { Modal } from "shared/ui/modal/modal";
-import st from "./styles.module.scss";
+import { SidebarCategoriesList } from "entities/category";
+
+import { Sidebar as SidebarUI } from "../../shared/ui/sidebar/sidebar";
+import { SidebarBlockLayout } from "shared/ui/sidebar-block-layout/sidebar-block-layout";
 
 // анимацию при первой загрузке надо пофиксить
 
 export const Sidebar = React.memo(() => {
+  const [width, setWidth] = useState(0);
+
   const context = useSidebar();
 
-  const sidebarRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      setWidth(window.innerWidth);
+    });
 
-  return (
-    <div>
-      <div className={st.sidebar__xs}>
-        <Modal
-          isOpen={context.isOpen}
-          onClose={() => context.toggleIsOpen(false)}
-        >
-          <div
-            ref={sidebarRef}
-            className={
-              context.isOpen
-                ? st.sidebar
-                : `${st.sidebar} ${st.sidebar__hidden}`
-            }
-          >
-            sidebar
-          </div>
-        </Modal>
-      </div>
-      <div className={st.sidebar__xl}>
-        <div
-          className={
-            context.isOpen ? st.sidebar : `${st.sidebar} ${st.sidebar__hidden}`
-          }
-          onClick={() => context.toggleIsOpen(false)}
-        >
-          sidebar
-        </div>
-      </div>
-    </div>
+    return () => {
+      window.removeEventListener("resize", () => {
+        setWidth(window.innerWidth);
+      });
+    };
+  }, []);
+
+  return width < 1000 ? (
+    <Modal isOpen={context.isOpen} onClose={() => context.toggleIsOpen(false)}>
+      <SidebarUI isOpen={context.isOpen}>
+        <SidebarBlockLayout title="Категории">
+          <SidebarCategoriesList />
+        </SidebarBlockLayout>
+        <SidebarBlockLayout title="Что-то ещё">Что-то ещё</SidebarBlockLayout>
+      </SidebarUI>
+    </Modal>
+  ) : (
+    <SidebarUI isOpen={true}>
+      <SidebarBlockLayout title="Категории">
+        <SidebarCategoriesList />
+      </SidebarBlockLayout>
+    </SidebarUI>
   );
 });

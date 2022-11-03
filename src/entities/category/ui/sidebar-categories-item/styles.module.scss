@@ -1,0 +1,36 @@
+@use "../../../../shared/styles/units.module";
+@use "../../../../shared/styles/colors.module";
+@use "../../../../shared/styles/typography.module";
+
+.item {
+  position: relative;
+  background: none;
+
+  min-height: calc(units.$unit * 2.5);
+}
+
+.item_title {
+  @include typography.menu_item;
+  color: colors.$text-primary;
+  transition: 0.16s;
+  &:hover {
+    color: colors.$text-secondary;
+    cursor: pointer;
+  }
+}
+
+.item__active {
+  &::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: calc(units.$unit * 3);
+    height: calc(units.$unit * 2.5);
+    background: colors.$primary;
+
+    border-radius: calc(units.$unit * 1.5) 0 0 calc(units.$unit * 1.5);
+
+    transform: translateY(-50%);
+  }
+}
