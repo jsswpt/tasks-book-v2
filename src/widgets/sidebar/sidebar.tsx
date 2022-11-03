@@ -9,7 +9,7 @@ import { SidebarBlockLayout } from "shared/ui/sidebar-block-layout/sidebar-block
 // анимацию при первой загрузке надо пофиксить
 
 export const Sidebar = React.memo(() => {
-  const [width, setWidth] = useState(0);
+  const [width, setWidth] = useState(window.innerWidth);
 
   const context = useSidebar();
 

@@ -1,0 +1,66 @@
+@use "../../shared/styles/units.module";
+@use "../../shared/styles/colors.module";
+@use "../../shared/styles/typography.module";
+
+.card {
+  position: relative;
+  padding: units.$unit * 1.5;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: units.$unit * 2;
+
+  border-radius: units.$unit * 1.5;
+  border: 1px solid colors.$text-secondary;
+
+  background: colors.$surface;
+}
+
+.caption {
+  position: absolute;
+  padding: units.$unit / 2 units.$unit * 2;
+  top: 0;
+
+  border-radius: units.$unit;
+
+  transform: translateY(-50%);
+  background: colors.$surface;
+}
+
+.caption_inner {
+  @include typography.caption;
+  color: colors.$text-secondary;
+}
+
+.deadline {
+  right: 10%;
+}
+
+.created {
+  left: 10%;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: units.$unit / 2;
+  width: 100%;
+
+  .divider {
+    background: colors.$text-secondary;
+    height: 1px;
+    width: 100%;
+  }
+}
+
+.title {
+  @include typography.body1;
+  color: colors.$text-primary;
+}
+
+.description {
+  @include typography.body2;
+  color: colors.$text-secondary;
+}

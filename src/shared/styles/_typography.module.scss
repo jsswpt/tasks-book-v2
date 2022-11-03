@@ -39,11 +39,26 @@
 
 @mixin body1 {
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 14px;
   line-height: 19px;
 
   letter-spacing: 0.02em;
+}
+
+@mixin body2 {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 19px;
+
+  letter-spacing: 0.02em;
+}
+
+@mixin caption {
+  font-style: normal;
+  font-size: 10px;
+  font-weight: 500;
 }
 
 @mixin link {

@@ -5,6 +5,7 @@ export type Task = {
   deadline: Date;
   creationDate: Date;
   categoryId: string;
+  isDone: boolean;
 };
 
 export type CreateTaskProps = Omit<Task, "id">;

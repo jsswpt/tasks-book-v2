@@ -9,7 +9,7 @@ import st from "./styles.module.scss";
 export const SidebarCategoriesList = React.memo(() => {
   const categories = categoryModel.state.categories;
 
-  const { categoryid } = useParams();
+  const { categoryId } = useParams();
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -31,7 +31,7 @@ export const SidebarCategoriesList = React.memo(() => {
       {categories.map((item) => (
         <SidebarCategoriesItem
           {...item}
-          isActive={item.id === categoryid}
+          isActive={item.id === categoryId}
           key={item.id}
           onClick={onClick}
         />

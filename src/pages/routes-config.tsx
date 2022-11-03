@@ -19,7 +19,7 @@ export const privateRoutesConfig: RouteObject[] = [
             element: <>tut zaglushka</>,
           },
           {
-            path: routes.privateRoutes.CATEGORIES + ":categoryid",
+            path: routes.privateRoutes.CATEGORIES + ":categoryId",
             element: <Tasks />,
           },
           {
