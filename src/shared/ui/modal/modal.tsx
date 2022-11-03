@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import ReactDOM from "react-dom";
 
 import st from "./styles.module.scss";
@@ -10,10 +10,12 @@ type ModalProps = {
 };
 
 export const Modal = (props: ModalProps) => {
+  const childrenRef = useRef<HTMLDivElement>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
+
   const el = useMemo(() => {
     const element = document.createElement("div");
     element.id = "modal_wrap";
-    element.className = st.modal;
 
     return element;
   }, []);
@@ -22,12 +24,13 @@ export const Modal = (props: ModalProps) => {
     if (props.isOpen) {
       document.body.appendChild(el);
 
-      el.className = st.modal + " " + st.rising;
+      modalRef.current!.className = st.modal + " " + st.rising;
 
       document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = "scroll";
-      el.className = st.modal + " " + st.hiding;
+      document.body.style.overflow = "auto";
+
+      modalRef.current!.className = st.modal + " " + st.hiding;
 
       const timeOut = setTimeout(() => {
         el.remove();
@@ -36,5 +39,16 @@ export const Modal = (props: ModalProps) => {
     }
   }, [props.isOpen]);
 
-  return ReactDOM.createPortal(props.children, el);
+  return ReactDOM.createPortal(
+    <div className={st.modal} ref={modalRef} onClick={props.onClose}>
+      <div
+        style={{ width: "fit-content" }}
+        ref={childrenRef}
+        onClick={(evt) => evt.stopPropagation()}
+      >
+        {props.children}
+      </div>
+    </div>,
+    el
+  );
 };

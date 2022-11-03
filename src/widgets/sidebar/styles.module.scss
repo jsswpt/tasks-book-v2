@@ -12,9 +12,11 @@
   overflow: hidden;
 
   @include breakpoints.screen-xs {
+    position: static;
     animation: show_sidebar linear forwards 0.64s;
   }
   @include breakpoints.screen-xl {
+    position: fixed;
     animation: none;
   }
 }
@@ -62,10 +64,13 @@
   0% {
     display: none;
     width: 0px;
+    background: none;
   }
   50% {
-    width: sidebar.$width;
+    display: block;
+    background: colors.$surface;
   }
   100% {
+    width: sidebar.$width;
   }
 }

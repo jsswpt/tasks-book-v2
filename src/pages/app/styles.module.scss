@@ -6,7 +6,6 @@
 @use "../../shared/styles/header.module";
 
 .app {
-  min-height: 100vh;
   background: colors.$background;
 
   @include breakpoints.screen-xs {
@@ -35,11 +34,5 @@
 }
 
 .main {
-  @include breakpoints.screen-xs {
-    padding: calc(units.$unit * 3) 0;
-  }
-  @include breakpoints.screen-xl {
-    padding: calc(units.$unit * 3) 0;
-    
-  }
+  padding: calc(units.$unit * 3) 0;
 }
