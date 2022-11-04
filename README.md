@@ -1,6 +1,6 @@
 # Tasks-book v2
 
-See project here: tasks-book-v2.surge.sh
+See project here: tasks-book-v2-fixed.surge.sh
 
 ## Stack
 
@@ -8,7 +8,3 @@ See project here: tasks-book-v2.surge.sh
 - mobX
 - Typescript
 - SASS
-
-### Issues
-
-I don't know why but еру levitated wrap with add-task button doesn't exists in the build
