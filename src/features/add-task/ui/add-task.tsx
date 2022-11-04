@@ -87,7 +87,7 @@ export const AddTask = observer(() => {
           </div>
           <div className={st.bottom}>
             <Button color="danger" onClick={model.close}>
-              Изменить
+              Отменить
             </Button>
             {model.categories.length > 0 && (
               <Button
