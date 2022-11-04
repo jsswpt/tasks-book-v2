@@ -1,5 +1,3 @@
-import { categoryModel } from "entities/category";
-import { observer } from "mobx-react-lite";
 import { Button } from "shared/ui/button/button";
 import { Caption } from "shared/ui/caption/caption";
 import { CardInnerLayout } from "shared/ui/card-inner-layout/card-inner-layout";
@@ -8,16 +6,19 @@ import { Input } from "shared/ui/input/input";
 import { TextArea } from "shared/ui/input/text-area";
 import { Option } from "shared/ui/select/option";
 import { Select } from "shared/ui/select/select";
-import { useAddTask } from "../model";
+import { useEditTask } from "../model";
 
 import st from "./styles.module.scss";
 
-export const AddTask = observer(() => {
-  const model = useAddTask();
+type EditTaskProps = {
+  taskid: string;
+};
 
+export const EditTask = (props: EditTaskProps) => {
+  const model = useEditTask(props.taskid);
   return (
     <Card className={st.card}>
-      <CardInnerLayout title="Новая задача">
+      <CardInnerLayout title="Редактирование заметки">
         <form
           onSubmit={(evt) => {
             evt.preventDefault();
@@ -53,8 +54,8 @@ export const AddTask = observer(() => {
             ) : (
               <div className={st.no_categories}>
                 <Caption>Создайте категорию</Caption>
-                <Button variant="contained" onClick={model.addCategory}>
-                  Создать
+                <Button variant="contained" type="submit">
+                  Изменить
                 </Button>
               </div>
             )}
@@ -86,7 +87,7 @@ export const AddTask = observer(() => {
           </div>
           <div className={st.bottom}>
             <Button color="danger" onClick={model.close}>
-              Изменить
+              Отмена
             </Button>
             {model.categories.length > 0 && (
               <Button
@@ -94,7 +95,7 @@ export const AddTask = observer(() => {
                 type="submit"
                 disabled={model.isSubmitting}
               >
-                Добавить
+                Изменить
               </Button>
             )}
           </div>
@@ -102,4 +103,4 @@ export const AddTask = observer(() => {
       </CardInnerLayout>
     </Card>
   );
-});
+};

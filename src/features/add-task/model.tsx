@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+
+import { categoryModel } from "entities/category";
 import { useModal } from "entities/modal-context/hooks/useModal";
 import { taskModel } from "entities/task/task";
 import { AddCategory } from "features/add-category/ui/add-category";
@@ -16,6 +19,8 @@ const initialValues: InitialValues = {
 };
 
 export const useAddTask = () => {
+  const categories = categoryModel.categories;
+
   const addTask = taskModel.addTask;
 
   const modal = useModal();
@@ -28,6 +33,15 @@ export const useAddTask = () => {
   const addCategory = () => {
     modal.toggleChildren(<AddCategory />);
   };
+
+  useEffect(() => {
+    // костыль создан из-за того, что, если есть всего одна категория,
+    // то событие onChange не отрабатывает
+
+    if (!formik.values.categoryId) {
+      formik.values.categoryId = categories[0].id;
+    }
+  }, [categories]);
 
   const formik = useFormik({
     initialValues,
@@ -45,5 +59,5 @@ export const useAddTask = () => {
     },
   });
 
-  return { ...formik, close, addCategory };
+  return { ...formik, close, addCategory, categories };
 };

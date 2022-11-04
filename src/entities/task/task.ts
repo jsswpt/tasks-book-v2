@@ -22,6 +22,8 @@ class Task {
     this.filterTasks = this.filterTasks.bind(this);
     this.setCurrentCategory = this.setCurrentCategory.bind(this);
     this.addTask = this.addTask.bind(this);
+    this.getTask = this.getTask.bind(this);
+    this.setTask = this.setTask.bind(this);
   }
 
   setCurrentCategory(category: string) {
@@ -70,8 +72,25 @@ class Task {
   }
 
   addTask(data: taskTypes.CreateTaskProps) {
+    console.log("Добавляю", data);
     this.baseTasks.push({ ...data, isDone: false, id: getRandomId() });
     this.filterTasks();
+  }
+
+  setTask(data: taskTypes.Task) {
+    this.baseTasks = this.baseTasks.map((item) => {
+      if (item.id === data.id) {
+        return data;
+      } else {
+        return item;
+      }
+    });
+
+    this.filterTasks();
+  }
+
+  getTask(taskid: string) {
+    return this.currentList.find((item) => item.id === taskid)!;
   }
 }
 

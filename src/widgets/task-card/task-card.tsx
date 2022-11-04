@@ -1,13 +1,23 @@
 import { observer } from "mobx-react-lite";
 
-import { ToggleTaskState } from "features";
+import { EditTask, ToggleTaskState } from "features";
 import { taskTypes } from "shared/api/types";
 
 import st from "./styles.module.scss";
 import { Caption } from "shared/ui/caption/caption";
 import { getDate } from "shared/lib/get-date/get-date";
 
+import { BsPencilSquare } from "react-icons/bs";
+import { IconButton } from "shared/ui/button/icon-button";
+import { useModal } from "entities/modal-context/hooks/useModal";
+
 export const TaskCard = observer((props: taskTypes.Task) => {
+  const modalContext = useModal();
+
+  const editTask = () => {
+    modalContext.toggleChildren(<EditTask taskid={props.id} />);
+    modalContext.toggleIsOpen(true);
+  };
   return (
     <div className={st.card}>
       <Caption className={st.deadline}>
@@ -21,7 +31,12 @@ export const TaskCard = observer((props: taskTypes.Task) => {
         <div className={st.divider}></div>
         <p className={st.description}>{props.description}</p>
       </div>
-      <ToggleTaskState taskId={props.id} value={props.isDone} />
+      <div>
+        <IconButton onClick={editTask}>
+          <BsPencilSquare />
+        </IconButton>
+        <ToggleTaskState taskId={props.id} value={props.isDone} />
+      </div>
     </div>
   );
 });
