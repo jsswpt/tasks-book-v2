@@ -1,6 +1,6 @@
 # Tasks-book v2
 
-See project here: tasks-book-v2.surge.sh
+See project here: tasks-book-v2-fixed.surge.sh
 
 ## Stack
 
