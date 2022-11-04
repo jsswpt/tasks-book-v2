@@ -9,11 +9,14 @@ import compose from "compose-function";
 import { useTasksPage } from "./model";
 
 import st from "../styles.module.scss";
+import { useWindowWidth } from "shared/hooks/useWindowWidth";
 
 const withHocs = compose(React.memo, observer);
 
 export const Tasks = withHocs(() => {
   const model = useTasksPage();
+
+  const width = useWindowWidth();
 
   return (
     <div className={st.tasks_page}>
@@ -27,15 +30,17 @@ export const Tasks = withHocs(() => {
           ))}
         </ul>
       </div>
-      <div className={st.levitate_wrap_button}>
-        <IconButton
-          variant="contained"
-          size="large"
-          onClick={model.toggleModal}
-        >
-          <BsPlus />
-        </IconButton>
-      </div>
+      {width < 1000 && (
+        <div className={st.levitate_wrap_button}>
+          <IconButton
+            variant="contained"
+            size="large"
+            onClick={model.toggleModal}
+          >
+            <BsPlus />
+          </IconButton>
+        </div>
+      )}
     </div>
   );
 });

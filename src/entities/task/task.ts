@@ -73,7 +73,6 @@ class Task {
   }
 
   addTask(data: taskTypes.CreateTaskProps) {
-    console.log("Добавляю", data);
     this.baseTasks.push({ ...data, isDone: false, id: getRandomId() });
     this.filterTasks();
   }

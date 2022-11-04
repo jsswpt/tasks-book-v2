@@ -31,13 +31,13 @@ export const TaskCard = observer((props: taskTypes.Task) => {
       <Caption className={st.created}>
         {getDate(props.creationDate).dateAsString}
       </Caption>
+      <ToggleTaskState taskId={props.id} value={props.isDone} />
       <div className={st.text}>
         <p className={st.title}>{props.title}</p>
         <div className={st.divider}></div>
         <p className={st.description}>{props.description}</p>
       </div>
       <div className={st.actions_wrap}>
-        <ToggleTaskState taskId={props.id} value={props.isDone} />
         <IconButton onClick={editTask}>
           <BsPencilSquare />
         </IconButton>

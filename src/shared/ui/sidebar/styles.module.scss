@@ -85,3 +85,7 @@
   flex-direction: column;
   gap: calc(units.$unit * 4);
 }
+
+.logo_wrap {
+  cursor: pointer;
+}

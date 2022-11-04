@@ -1,4 +1,6 @@
+import { useLocation, useNavigate } from "react-router-dom";
 import { Logo } from "shared/assets/svgs/Logo";
+import { routes } from "shared/config/routes";
 import st from "./styles.module.scss";
 
 type SidebarProps = {
@@ -7,6 +9,14 @@ type SidebarProps = {
 };
 
 export const Sidebar = (props: SidebarProps) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const navigateHome = () => {
+    if (location.pathname !== routes.privateRoutesForNavigation.HOME) {
+      navigate(routes.privateRoutesForNavigation.HOME);
+    }
+  };
   return (
     <div
       className={
@@ -14,7 +24,7 @@ export const Sidebar = (props: SidebarProps) => {
       }
     >
       <div className={st.sidebar_block + " " + st.sidebar_block__top}>
-        <div className={st.inner}>
+        <div className={st.logo_wrap} onClick={navigateHome}>
           <Logo />
         </div>
       </div>

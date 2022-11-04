@@ -49,25 +49,10 @@
   gap: units.$unit * 2;
 }
 
-.levitate_wrap {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-}
-
 .levitate_wrap_button {
-  display: block;
   z-index: 80;
+  display: block;
   position: fixed;
   bottom: units.$unit * 5;
   right: units.$unit * 5;
-
-  @include breakpoints.screen-xs {
-    display: block;
-  }
-  @include breakpoints.screen-xl {
-    display: none;
-  }
 }

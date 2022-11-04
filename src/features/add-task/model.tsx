@@ -38,7 +38,7 @@ export const useAddTask = () => {
     // костыль создан из-за того, что, если есть всего одна категория,
     // то событие onChange не отрабатывает
 
-    if (!formik.values.categoryId) {
+    if (!formik.values.categoryId && categories.length) {
       formik.values.categoryId = categories[0].id;
     }
   }, [categories]);

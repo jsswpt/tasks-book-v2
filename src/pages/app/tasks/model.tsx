@@ -7,13 +7,11 @@ import { AddTask } from "features";
 export const useTasksPage = () => {
   const { categoryId } = useParams();
   const tasks = taskModel;
-  console.log("новые таски", tasks.currentList.length);
 
   const modalContext = useModal();
 
   useEffect(() => {
     tasks.setCurrentCategory(categoryId!);
-    console.log("айди категории", tasks.currentCategory);
   }, [categoryId]);
 
   const toggleModal = () => {

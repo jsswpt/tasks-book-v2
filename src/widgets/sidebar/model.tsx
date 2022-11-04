@@ -6,8 +6,6 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 export const useSidebarWidget = () => {
-  const [width, setWidth] = useState(window.innerWidth);
-
   const context = useSidebar();
   const modalContext = useModal();
 
@@ -17,18 +15,6 @@ export const useSidebarWidget = () => {
     modalContext.toggleChildren(<AddCategory />);
     modalContext.toggleIsOpen(true);
   };
-
-  useEffect(() => {
-    window.addEventListener("resize", () => {
-      setWidth(window.innerWidth);
-    });
-
-    return () => {
-      window.removeEventListener("resize", () => {
-        setWidth(window.innerWidth);
-      });
-    };
-  }, []);
 
   const { categoryId } = useParams();
 
@@ -48,7 +34,6 @@ export const useSidebarWidget = () => {
     categories,
     modalContext,
     context,
-    width,
     remove,
     edit,
   };

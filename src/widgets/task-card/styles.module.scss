@@ -1,6 +1,7 @@
 @use "../../shared/styles/units.module";
 @use "../../shared/styles/colors.module";
 @use "../../shared/styles/typography.module";
+@use "../../shared/styles/breakpoints.module";
 
 .card {
   position: relative;
@@ -51,7 +52,13 @@
 
 .actions_wrap {
   display: flex;
-  flex-direction: column;
   gap: units.$unit;
   align-items: center;
+
+  @include breakpoints.screen-xs {
+    flex-direction: column;
+  }
+  @include breakpoints.screen-xl {
+    flex-direction: row;
+  }
 }

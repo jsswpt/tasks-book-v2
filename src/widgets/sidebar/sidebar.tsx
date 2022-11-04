@@ -15,6 +15,7 @@ import { Button } from "shared/ui/button/button";
 import { BsBucket, BsPencil, BsPencilSquare, BsPlus } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { routes } from "shared/config/routes";
+import { useWindowWidth } from "shared/hooks/useWindowWidth";
 
 const withHocs = compose(React.memo, observer);
 
@@ -70,7 +71,9 @@ export const Sidebar = withHocs(() => {
     );
   }, [model]);
 
-  return model.width < 1000 ? (
+  const width = useWindowWidth();
+
+  return width < 1000 ? (
     <Modal
       isOpen={model.context.isOpen}
       onClose={() => model.context.toggleIsOpen(false)}
