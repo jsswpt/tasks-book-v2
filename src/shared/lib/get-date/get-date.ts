@@ -1,3 +1,5 @@
+// как число получаю дату для того, чтобы в будущем реализовать сортировку по дате
+
 export const getDate = (date: Date) => {
   return {
     dateAsNumber: parseInt(

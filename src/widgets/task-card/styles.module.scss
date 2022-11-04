@@ -48,3 +48,10 @@
   @include typography.body2;
   color: colors.$text-secondary;
 }
+
+.actions_wrap {
+  display: flex;
+  flex-direction: column;
+  gap: units.$unit;
+  align-items: center;
+}

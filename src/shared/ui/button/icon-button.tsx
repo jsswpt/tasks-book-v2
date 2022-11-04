@@ -42,13 +42,13 @@ export const IconButton = (props: ButtonProps) => {
           props.variant === "outlined" &&
           (props.color === "primary" || !props.color),
         [st.border_danger]:
-          props.variant !== "outlined" && props.color === "danger",
+          props.variant === "outlined" && props.color === "danger",
         [st.border_warning]:
-          props.variant !== "outlined" && props.color === "warning",
+          props.variant === "outlined" && props.color === "warning",
         [st.border_success]:
-          props.variant !== "outlined" && props.color === "success",
+          props.variant === "outlined" && props.color === "success",
         [st.border_inherit]:
-          props.variant !== "outlined" && props.color === "inherit",
+          props.variant === "outlined" && props.color === "inherit",
 
         [st.icon_large]: props.size === "large",
         [st.icon_medium]: props.size === "medium" || !props.size,

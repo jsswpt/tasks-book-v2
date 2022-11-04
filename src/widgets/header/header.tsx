@@ -37,7 +37,6 @@ export const Header = React.memo(() => {
             Новая задача
           </Button>
         </div>
-        <div>тут типа аватар</div>
       </div>
     </header>
   );

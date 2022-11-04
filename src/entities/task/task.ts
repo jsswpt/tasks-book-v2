@@ -24,6 +24,7 @@ class Task {
     this.addTask = this.addTask.bind(this);
     this.getTask = this.getTask.bind(this);
     this.setTask = this.setTask.bind(this);
+    this.removeTask = this.removeTask.bind(this);
   }
 
   setCurrentCategory(category: string) {
@@ -91,6 +92,12 @@ class Task {
 
   getTask(taskid: string) {
     return this.currentList.find((item) => item.id === taskid)!;
+  }
+
+  removeTask(taskid: string) {
+    this.baseTasks = this.baseTasks.filter((item) => item.id !== taskid);
+
+    this.filterTasks();
   }
 }
 

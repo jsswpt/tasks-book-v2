@@ -18,7 +18,16 @@
 
   background: colors.$surface;
 
-  overflow: hidden;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(175, 175, 175, 0.445);
+    border-radius: units.$unit * 4;
+  }
 
   @include breakpoints.screen-xs {
     position: static;

@@ -8,7 +8,7 @@ interface SidebarCategoriesItemProps extends categoryTypes.Category {
 
 export const SidebarCategoriesItem = (props: SidebarCategoriesItemProps) => {
   return (
-    <li
+    <div
       className={props.isActive ? st.item + " " + st.item__active : st.item}
       onClick={() => {
         if (props.onClick) {
@@ -17,6 +17,6 @@ export const SidebarCategoriesItem = (props: SidebarCategoriesItemProps) => {
       }}
     >
       <p className={st.item_title}>{props.title}</p>
-    </li>
+    </div>
   );
 };

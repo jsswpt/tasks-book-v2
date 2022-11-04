@@ -1,0 +1,21 @@
+@use "../../shared/styles/units.module";
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: units.$unit * 2;
+  list-style: none;
+}
+
+.action_wrap {
+  display: flex;
+  flex-direction: column;
+  gap: units.$unit;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: units.$unit;
+  width: 100%;
+}

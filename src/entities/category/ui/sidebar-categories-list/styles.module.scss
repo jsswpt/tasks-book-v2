@@ -1,9 +1,0 @@
-@use "../../../../shared/styles/units.module";
-
-.list {
-  display: flex;
-  flex-direction: column;
-  gap: units.$unit;
-
-  list-style: none;
-}

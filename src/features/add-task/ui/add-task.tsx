@@ -22,6 +22,7 @@ export const AddTask = observer(() => {
           onSubmit={(evt) => {
             evt.preventDefault();
             model.handleSubmit();
+            model.close();
           }}
           className={st.form}
         >

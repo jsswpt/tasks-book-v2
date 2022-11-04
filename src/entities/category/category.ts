@@ -12,6 +12,8 @@ class Category {
 
     this.createCategory = this.createCategory.bind(this);
     this.removeCategory = this.removeCategory.bind(this);
+    this.setCategory = this.setCategory.bind(this);
+    this.getCategory = this.getCategory.bind(this);
   }
 
   createCategory(data: categoryTypes.CreateCategoryProps) {
@@ -19,6 +21,18 @@ class Category {
   }
   removeCategory(data: categoryTypes.RemoveCategoryProps) {
     this.categories = this.categories.filter((item) => item.id !== data.id);
+  }
+  setCategory(data: categoryTypes.Category) {
+    this.categories = this.categories.map((item) => {
+      if (item.id === data.id) {
+        return data;
+      }
+      return item;
+    });
+  }
+
+  getCategory(categoryid: string) {
+    return this.categories.find((item) => item.id === categoryid)!;
   }
 }
 

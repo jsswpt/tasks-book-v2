@@ -11,7 +11,7 @@ export const Home = React.memo(() => {
       <div className={st.side}>
         <Card>
           <CardInnerLayout title="Статистика">
-            Тут будут виджеты везде
+            В теории можно добавить виджет статистики
           </CardInnerLayout>
         </Card>
         <Card>
@@ -22,10 +22,12 @@ export const Home = React.memo(() => {
       </div>
       <div className={st.side}>
         <Card>
-          <CardInnerLayout title="Задачи">Какой-то блок</CardInnerLayout>
+          <CardInnerLayout title="Факт">
+            Какой-то случайный факт
+          </CardInnerLayout>
         </Card>
         <Card>
-          <CardInnerLayout title="Задачи">Какой-то блок</CardInnerLayout>
+          <CardInnerLayout title="Ещё что-то">Какой-то блок</CardInnerLayout>
         </Card>
       </div>
     </div>

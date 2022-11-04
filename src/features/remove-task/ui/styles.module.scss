@@ -1,0 +1,19 @@
+@use "../../../shared/styles/units.module";
+@use "../../../shared/styles/breakpoints.module";
+
+.card {
+  @include breakpoints.screen-xs {
+    width: 100%;
+    min-width: 0;
+  }
+  @include breakpoints.screen-xl {
+    min-width: 400px;
+    width: auto;
+  }
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

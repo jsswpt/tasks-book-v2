@@ -23,6 +23,7 @@ export const EditTask = (props: EditTaskProps) => {
           onSubmit={(evt) => {
             evt.preventDefault();
             model.handleSubmit();
+            model.close();
           }}
           className={st.form}
         >
