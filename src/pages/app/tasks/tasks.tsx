@@ -25,9 +25,13 @@ export const Tasks = withHocs(() => {
       <div className="">
         <FilterTasks />
       </div>
-      {tasks.currentList.map((item) => (
-        <TaskCard {...item} key={item.id} />
-      ))}
+      <div>
+        <ul className="">
+          {tasks.currentList.map((item) => (
+            <TaskCard {...item} key={item.id} />
+          ))}
+        </ul>
+      </div>
     </div>
   );
 });

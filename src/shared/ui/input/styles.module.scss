@@ -1,0 +1,95 @@
+@use "../../styles/units.module";
+@use "../../styles/colors.module";
+
+.input_wrap {
+  position: relative;
+}
+
+.input {
+  padding: 0 units.$unit * 2;
+  position: relative;
+  background: colors.$surface;
+  outline: none;
+  border: none;
+
+  transition: 0.32s;
+}
+
+.outlined {
+  border-radius: units.$unit * 1.5;
+  border: 1px solid colors.$text-secondary;
+
+  &:focus {
+    border: 1px solid colors.$primary;
+  }
+}
+
+.default {
+  position: relative;
+
+  &:hover {
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+  }
+
+  &::before {
+    z-index: 2;
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background: colors.$primary;
+
+    transition: 0.32s;
+
+    transform: translateX(-50%);
+  }
+
+  &:focus::before {
+    width: 100%;
+  }
+
+  &::after {
+    z-index: 1;
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 100%;
+    height: 1px;
+    background: colors.$text-secondary;
+
+    transition: 0.32s;
+
+    transform: translateX(-50%);
+  }
+  &:focus::after {
+    width: 0;
+  }
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.large {
+  height: units.$large;
+}
+
+.medium {
+  height: units.$medium;
+}
+
+.small {
+  height: units.$small;
+}
+
+.textArea {
+  padding: units.$unit;
+  border: 1px solid colors.$text-secondary;
+  background: colors.$surface;
+  border-radius: units.$unit * 1.5;
+  resize: vertical;
+  outline: none;
+}

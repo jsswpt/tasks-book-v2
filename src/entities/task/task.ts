@@ -58,6 +58,7 @@ class Task {
     this.removeFilterFunc = this.removeFilterFunc.bind(this);
     this.filterTasks = this.filterTasks.bind(this);
     this.setCurrentCategory = this.setCurrentCategory.bind(this);
+    this.addTask = this.addTask.bind(this);
   }
 
   setCurrentCategory(category: string) {
@@ -69,7 +70,6 @@ class Task {
     this.baseTasks = this.baseTasks.map((item) =>
       item.id === taskId ? { ...item, isDone: !item.isDone } : item
     );
-
     this.filterTasks();
   }
 
@@ -104,6 +104,10 @@ class Task {
   removeFilterFunc(id: string) {
     // пока что массив очищается полностью
     this.filterFunctions = [];
+  }
+
+  addTask(data: taskTypes.CreateTaskProps) {
+    this.baseTasks.push({ ...data, isDone: false, id: getRandomId() });
   }
 }
 

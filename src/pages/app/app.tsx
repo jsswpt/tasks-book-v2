@@ -14,7 +14,10 @@ export const App = () => {
         alignCenter
         children={modalContext.children ? modalContext.children : <></>}
         isOpen={modalContext.isOpen}
-        onClose={() => modalContext.toggleIsOpen(false)}
+        onClose={() => {
+          modalContext.toggleChildren(null);
+          modalContext.toggleIsOpen(false);
+        }}
       />
       <Sidebar />
       <div className={st.app_content_wrap}>

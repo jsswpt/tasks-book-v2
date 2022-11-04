@@ -1,0 +1,20 @@
+@use "../../styles/units.module";
+@use "../../styles/colors.module";
+@use "../../styles/typography.module";
+
+.caption {
+  z-index: 2;
+  position: absolute;
+  padding: units.$unit / 2 units.$unit * 2;
+  top: 0;
+
+  border-radius: units.$unit;
+
+  transform: translateY(-50%);
+  background: colors.$surface;
+}
+
+.caption_inner {
+  @include typography.caption;
+  color: colors.$text-secondary;
+}

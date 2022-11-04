@@ -1,0 +1,33 @@
+@use "../../styles/units.module";
+@use "../../styles/colors.module";
+@use "../../styles/typography.module";
+
+.select_wrap {
+  position: relative;
+}
+
+.select {
+  padding: 0 units.$unit;
+  border-radius: units.$unit * 1.5;
+
+  min-width: max-content;
+  outline: none;
+  border: 1px solid colors.$text-secondary;
+  background: colors.$surface;
+}
+
+.large {
+  height: units.$large;
+}
+
+.medium {
+  height: units.$medium;
+}
+
+.small {
+  height: units.$small;
+}
+
+.option {
+  background: colors.$background;
+}

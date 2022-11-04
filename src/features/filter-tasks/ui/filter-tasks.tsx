@@ -1,11 +1,13 @@
 import { observer } from "mobx-react-lite";
+import { Option } from "shared/ui/select/option";
+import { Select } from "shared/ui/select/select";
 import { useFilterTasks } from "../model";
 
 export const FilterTasks = observer(() => {
   const model = useFilterTasks();
 
   return (
-    <select
+    <Select
       defaultValue={model.options[0].value}
       onChange={(evt) => {
         const item = model.options.find(
@@ -17,10 +19,10 @@ export const FilterTasks = observer(() => {
       }}
     >
       {model.options.map((item) => (
-        <option key={item.value} value={item.value}>
+        <Option key={item.value} value={item.value}>
           {item.title}
-        </option>
+        </Option>
       ))}
-    </select>
+    </Select>
   );
 });

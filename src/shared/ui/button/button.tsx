@@ -1,3 +1,5 @@
+import React from "react";
+
 import classNames from "classnames";
 import { ButtonHTMLAttributes } from "react";
 import st from "./styles.module.scss";
@@ -10,7 +12,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   fullWidth?: boolean;
 }
 
-export const Button = (props: ButtonProps) => {
+export const Button = React.memo((props: ButtonProps) => {
   return (
     <button
       className={classNames(st.button, {
@@ -44,13 +46,13 @@ export const Button = (props: ButtonProps) => {
           props.variant === "outlined" &&
           (props.color === "primary" || !props.color),
         [st.border_danger]:
-          props.variant !== "outlined" && props.color === "danger",
+          props.variant === "outlined" && props.color === "danger",
         [st.border_warning]:
-          props.variant !== "outlined" && props.color === "warning",
+          props.variant === "outlined" && props.color === "warning",
         [st.border_success]:
-          props.variant !== "outlined" && props.color === "success",
+          props.variant === "outlined" && props.color === "success",
         [st.border_inherit]:
-          props.variant !== "outlined" && props.color === "inherit",
+          props.variant === "outlined" && props.color === "inherit",
 
         [st.large]: props.size === "large",
         [st.medium]: props.size === "medium" || !props.size,
@@ -64,4 +66,4 @@ export const Button = (props: ButtonProps) => {
       </div>
     </button>
   );
-};
+});

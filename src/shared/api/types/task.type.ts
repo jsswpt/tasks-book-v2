@@ -8,5 +8,5 @@ export type Task = {
   isDone: boolean;
 };
 
-export type CreateTaskProps = Omit<Task, "id">;
+export type CreateTaskProps = Omit<Task, "id" | "isDone">;
 export type RemoveTaskProps = Pick<Task, "id">;

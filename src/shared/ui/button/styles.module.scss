@@ -4,12 +4,17 @@
 
 .button {
   @include typography.button_inner;
-  padding: 0 units.$unit * 4;
   border: none;
   border-radius: units.$unit * 1.5;
 
   transition: 0.16s;
   cursor: pointer;
+
+  &:disabled {
+    background: colors.$text-secondary;
+    cursor: default;
+    color: colors.$text-primary;
+  }
 }
 
 .icon_button {
@@ -22,14 +27,15 @@
 }
 
 .button_inner {
+  min-width: units.$unit * 15;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   gap: units.$unit;
 }
 
 .small {
-  height: units.$unit * 3;
+  height: units.$small;
 
   .icon {
     width: units.$unit * 2;
@@ -38,7 +44,7 @@
 }
 
 .medium {
-  height: units.$unit * 5;
+  height: units.$medium;
 
   .icon {
     width: units.$unit * 3;
@@ -47,7 +53,7 @@
 }
 
 .large {
-  height: units.$unit * 7;
+  height: units.$large;
   .icon {
     width: units.$unit * 4;
     height: units.$unit * 4;

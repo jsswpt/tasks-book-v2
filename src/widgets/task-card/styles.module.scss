@@ -18,22 +18,6 @@
   background: colors.$surface;
 }
 
-.caption {
-  position: absolute;
-  padding: units.$unit / 2 units.$unit * 2;
-  top: 0;
-
-  border-radius: units.$unit;
-
-  transform: translateY(-50%);
-  background: colors.$surface;
-}
-
-.caption_inner {
-  @include typography.caption;
-  color: colors.$text-secondary;
-}
-
 .deadline {
   right: 10%;
 }
