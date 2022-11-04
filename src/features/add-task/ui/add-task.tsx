@@ -1,6 +1,7 @@
 import { categoryModel } from "entities/category";
 import { observer } from "mobx-react-lite";
 import { Button } from "shared/ui/button/button";
+import { Caption } from "shared/ui/caption/caption";
 import { CardInnerLayout } from "shared/ui/card-inner-layout/card-inner-layout";
 import { Card } from "shared/ui/card/card";
 import { Input } from "shared/ui/input/input";
@@ -13,10 +14,10 @@ import st from "./styles.module.scss";
 
 export const AddTask = observer(() => {
   const model = useAddTask();
-  const categories = categoryModel.state.categories;
+  const categories = categoryModel.categories;
   return (
     <Card className={st.card}>
-      <CardInnerLayout title="Создать задачу">
+      <CardInnerLayout title="Новая задача">
         <form
           onSubmit={(evt) => {
             evt.preventDefault();
@@ -33,20 +34,30 @@ export const AddTask = observer(() => {
               value={model.values.title}
               onChange={model.handleChange}
             />
-            <Select
-              caption="Категория"
-              name="categoryId"
-              onChange={model.handleChange}
-            >
-              {categories.map((item) => (
-                <Option value={item.id} key={item.id}>
-                  {item.title}
-                </Option>
-              ))}
-            </Select>
+            {categories.length > 0 ? (
+              <Select
+                caption="Категория"
+                name="categoryId"
+                onChange={model.handleChange}
+              >
+                {categories.map((item) => (
+                  <Option value={item.id} key={item.id}>
+                    {item.title}
+                  </Option>
+                ))}
+              </Select>
+            ) : (
+              <div className={st.no_categories}>
+                <Caption>Создайте категорию</Caption>
+                <Button variant="contained" onClick={model.addCategory}>
+                  Создать
+                </Button>
+              </div>
+            )}
           </div>
           <div className={st.middle}>
             <TextArea
+              placeholder="Введите описание задачи"
               fullWidth
               name="description"
               value={model.values.description}
@@ -70,10 +81,18 @@ export const AddTask = observer(() => {
             </div>
           </div>
           <div className={st.bottom}>
-            <Button color="danger">Cancel</Button>
-            <Button color="primary" type="submit" disabled={model.isSubmitting}>
-              Add
+            <Button color="danger" onClick={model.close}>
+              Cancel
             </Button>
+            {categories.length > 0 && (
+              <Button
+                color="primary"
+                type="submit"
+                disabled={model.isSubmitting}
+              >
+                Add
+              </Button>
+            )}
           </div>
         </form>
       </CardInnerLayout>

@@ -1,5 +1,8 @@
 import React, { createContext } from "react";
 
+// можно добавить массив childrens, с помощью которых можно будет возвращаться к предыдущим
+// элементам
+
 export type ModalContextProps = {
   isOpen: boolean;
   toggleIsOpen: (arg: boolean) => void;

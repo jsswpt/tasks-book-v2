@@ -1,36 +1,40 @@
-import { taskModel } from "entities/task/task";
 import { FilterTasks } from "features";
 import { observer } from "mobx-react-lite";
-import React, { useEffect, useMemo } from "react";
-import { useParams } from "react-router-dom";
+import React from "react";
 import { TaskCard } from "widgets";
-import compose from "compose-function";
-import { Button } from "shared/ui/button/button";
+import { IconButton } from "shared/ui/button/icon-button";
+import { BsPlus } from "react-icons/bs";
 
-import { BsPlusCircle } from "react-icons/bs";
+import compose from "compose-function";
+import { useTasksPage } from "./model";
+
+import st from "../styles.module.scss";
 
 const withHocs = compose(React.memo, observer);
 
 export const Tasks = withHocs(() => {
-  const { categoryId } = useParams();
-  const tasks = taskModel;
-
-  useEffect(() => {
-    tasks.setCurrentCategory(categoryId!);
-    console.log(tasks.currentCategory);
-  }, [categoryId]);
+  const model = useTasksPage();
 
   return (
-    <div>
-      <div className="">
+    <div className={st.tasks_page}>
+      <div className={st.filters_wrap}>
         <FilterTasks />
       </div>
-      <div>
-        <ul className="">
-          {tasks.currentList.map((item) => (
+      <div className={st.tasks_wrap}>
+        <ul className={st.tasks_list}>
+          {model.tasks.currentList.map((item) => (
             <TaskCard {...item} key={item.id} />
           ))}
         </ul>
+      </div>
+      <div className={st.levitate_wrap_button}>
+        <IconButton
+          variant="contained"
+          size="large"
+          onClick={model.toggleModal}
+        >
+          <BsPlus />
+        </IconButton>
       </div>
     </div>
   );

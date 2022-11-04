@@ -18,32 +18,8 @@
   gap: 8px;
 }
 
-.top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: units.$unit;
-}
-
-.middle {
-  display: flex;
-  flex-direction: column;
-  gap: units.$unit;
-}
-
-.middle_date {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .bottom {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.no_categories {
-  padding: 8px;
-  position: relative;
 }

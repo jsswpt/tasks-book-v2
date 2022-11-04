@@ -7,11 +7,13 @@
   border: none;
   border-radius: units.$unit * 1.5;
 
-  transition: 0.16s;
+  background: colors.$background;
+
+  transition: 0.32s;
   cursor: pointer;
 
   &:disabled {
-    background: colors.$text-secondary;
+    background: colors.$surface;
     cursor: default;
     color: colors.$text-primary;
   }
@@ -27,6 +29,7 @@
 }
 
 .button_inner {
+  padding: 0 units.$unit * 4;
   min-width: units.$unit * 15;
   display: flex;
   justify-content: center;

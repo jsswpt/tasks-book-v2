@@ -6,8 +6,13 @@ import { SidebarCategoriesItem } from "../sidebar-categories-item/sidebar-catego
 
 import st from "./styles.module.scss";
 
-export const SidebarCategoriesList = React.memo(() => {
-  const categories = categoryModel.state.categories;
+import compose from "compose-function";
+import { observer } from "mobx-react-lite";
+
+const withHocs = compose(React.memo, observer);
+
+export const SidebarCategoriesList = withHocs(() => {
+  const categories = categoryModel.categories;
 
   const { categoryId } = useParams();
 
@@ -25,6 +30,8 @@ export const SidebarCategoriesList = React.memo(() => {
     },
     [location.pathname]
   );
+
+  console.log("что-то новое");
 
   return (
     <ul className={st.list}>

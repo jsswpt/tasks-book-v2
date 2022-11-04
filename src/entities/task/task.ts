@@ -4,44 +4,7 @@ import { taskTypes, utilTypes } from "shared/api/types";
 import { getRandomId } from "shared/lib/get-random-id/get-random-id";
 
 class Task {
-  baseTasks: taskTypes.Task[] = [
-    {
-      categoryId: "first-category",
-      creationDate: new Date(),
-      deadline: new Date(2022, 11, 10),
-      description: "some description",
-      id: "first",
-      title: "Feed a cat",
-      isDone: true,
-    },
-    {
-      categoryId: "first-category",
-      creationDate: new Date(),
-      deadline: new Date(2022, 11, 10),
-      description: "some description",
-      id: "first2",
-      title: "Feed a cat",
-      isDone: false,
-    },
-    {
-      categoryId: "first-category",
-      creationDate: new Date(),
-      deadline: new Date(2022, 11, 10),
-      description: "some description",
-      id: "first3",
-      title: "Feed a cat",
-      isDone: true,
-    },
-    {
-      categoryId: "first-category",
-      creationDate: new Date(),
-      deadline: new Date(2022, 11, 10),
-      description: "some description",
-      id: "first4",
-      title: "Feed a cat",
-      isDone: false,
-    },
-  ];
+  baseTasks: taskTypes.Task[] = [];
 
   // как бы временный массив, используемый при наличии фильтров
   currentList: taskTypes.Task[] = [...this.baseTasks];
@@ -108,6 +71,7 @@ class Task {
 
   addTask(data: taskTypes.CreateTaskProps) {
     this.baseTasks.push({ ...data, isDone: false, id: getRandomId() });
+    this.filterTasks();
   }
 }
 

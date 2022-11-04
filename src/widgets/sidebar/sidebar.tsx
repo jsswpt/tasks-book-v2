@@ -5,13 +5,26 @@ import { SidebarCategoriesList } from "entities/category";
 
 import { Sidebar as SidebarUI } from "../../shared/ui/sidebar/sidebar";
 import { SidebarBlockLayout } from "shared/ui/sidebar-block-layout/sidebar-block-layout";
+import { AddCategory } from "features";
+import { Button } from "shared/ui/button/button";
+import { useModal } from "entities/modal-context/hooks/useModal";
+import { BsPlus } from "react-icons/bs";
 
-// анимацию при первой загрузке надо пофиксить
+import compose from "compose-function";
+import { observer } from "mobx-react-lite";
 
-export const Sidebar = React.memo(() => {
+const withHocs = compose(React.memo, observer);
+
+export const Sidebar = withHocs(() => {
   const [width, setWidth] = useState(window.innerWidth);
 
   const context = useSidebar();
+  const modalContext = useModal();
+
+  const toggleAddCategory = () => {
+    modalContext.toggleChildren(<AddCategory />);
+    modalContext.toggleIsOpen(true);
+  };
 
   useEffect(() => {
     window.addEventListener("resize", () => {
@@ -29,7 +42,12 @@ export const Sidebar = React.memo(() => {
     <Modal isOpen={context.isOpen} onClose={() => context.toggleIsOpen(false)}>
       <SidebarUI isOpen={context.isOpen}>
         <SidebarBlockLayout title="Категории">
-          <SidebarCategoriesList />
+          <div>
+            <SidebarCategoriesList />
+            <Button onClick={toggleAddCategory} icon={<BsPlus />}>
+              Добавить
+            </Button>
+          </div>
         </SidebarBlockLayout>
         <SidebarBlockLayout title="Что-то ещё">Что-то ещё</SidebarBlockLayout>
       </SidebarUI>
@@ -37,7 +55,12 @@ export const Sidebar = React.memo(() => {
   ) : (
     <SidebarUI isOpen={true}>
       <SidebarBlockLayout title="Категории">
-        <SidebarCategoriesList />
+        <div>
+          <SidebarCategoriesList />
+          <Button onClick={toggleAddCategory} icon={<BsPlus />}>
+            Добавить
+          </Button>
+        </div>
       </SidebarBlockLayout>
     </SidebarUI>
   );

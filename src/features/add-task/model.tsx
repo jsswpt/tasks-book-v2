@@ -1,4 +1,6 @@
+import { useModal } from "entities/modal-context/hooks/useModal";
 import { taskModel } from "entities/task/task";
+import { AddCategory } from "features/add-category/ui/add-category";
 import { useFormik } from "formik";
 import { useState } from "react";
 import { taskTypes } from "shared/api/types";
@@ -15,6 +17,18 @@ const initialValues: InitialValues = {
 
 export const useAddTask = () => {
   const addTask = taskModel.addTask;
+
+  const modal = useModal();
+
+  const close = () => {
+    modal.toggleChildren(null);
+    modal.toggleIsOpen(false);
+  };
+
+  const addCategory = () => {
+    modal.toggleChildren(<AddCategory />);
+  };
+
   const formik = useFormik({
     initialValues,
     onSubmit: (values, { setSubmitting }) => {
@@ -31,5 +45,5 @@ export const useAddTask = () => {
     },
   });
 
-  return { ...formik };
+  return { ...formik, close, addCategory };
 };
